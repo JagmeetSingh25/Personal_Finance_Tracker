@@ -1,0 +1,131 @@
+#add a {
+    padding: 25px;
+}
+
+#add .ui-btn-icon-right:after {
+    left: 50%;
+    margin-left: -11px;
+}
+
+#expenseListView li,#incomeListView li {
+    margin: 15px;
+    border: 2px solid #333232;
+    border-radius: 5px;
+}
+
+label.error{ color: #F00;
+    font-weight: bold;
+    text-align: center;
+}
+
+input.error, select.error,
+textarea.error {
+    border: 1px red solid !important;
+}
+
+#Add {
+    position: fixed;
+    bottom: 60px;
+    right: 10px;
+    background-color: #1b1b1b;
+    padding: 10px;
+    border-radius: 100%;
+
+}
+
+ul#email li
+{
+    background-color: #252525;
+    padding: inherit;
+    list-style: none;
+}
+
+.image-container{
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px;
+}
+
+.image-container img {
+    margin-bottom: 5px;
+}
+
+#mainPage h3 {
+    font-family: "Arial Rounded MT Bold";
+    font-variant: full-width;
+    padding: 10px;
+
+
+
+}
+#mainPage {
+    background-color: #252525;
+}
+
+
+#mainPage header {
+    background-color: #3498db;
+    color: #fff;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+}
+
+#navbar {
+    background-color: #2c3e50;
+}
+
+#navbar ul {
+    list-style: none;
+
+}
+
+#navbar li {
+    display: inline-block;
+}
+a:hover {
+    color:midnightblue;
+    background-color: #454545;
+}
+
+
+#aboutPage p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: whitesmoke;
+}
+
+#aboutPage h2 {
+    margin-top: 20px;
+    color:beige;
+}
+
+#aboutPage ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#aboutPage li {
+    margin-bottom: 10px;
+}
+
+#aboutPage section li a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#aboutPage section li a:hover {
+    text-decoration: underline;
+}
+#remainingIncomeArea {
+    text-align: center;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}

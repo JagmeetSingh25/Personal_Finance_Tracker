@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Personal Finance Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <script src="js/lib/jquery.validate.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/facade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/DAL.js"></script>
+    <script src="js/expense.js"></script>
+    <script src="js/income.js"></script>
+    <script src="js/savings.js"></script>
+    <script>
+        const otMeta = document.createElement('meta');
+        otMeta.httpEquiv = 'origin-trial';
+        otMeta.content = 'AjlQd1gzqSlgL0m5R6UzX/seK2l6d/hMbVbGovm8B6qc+3TnwuEGUPIH6I4mYzmWZ70latoevq/81DC5oqV6FgQAAABKeyJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjYzMzQyIiwiZmVhdHVyZSI6IldlYlNRTCIsImV4cGlyeSI6MTcxNjk0MDc5OX0=';
+        document.head.append(otMeta);
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Tangerine&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" >
+</head>
+
+<body>
+    <!-- Home/Main Page -->
+    <div id="mainPage" data-role="page" data-theme="b">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Finance App</h1>
+        </header>
+        <nav>
+            <div id="navbar" data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a data-icon="home" data-iconpos="top" class="ui-btn ui-btn-active ui-state-persist">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expensePage" data-icon="carat-d" data-iconpos="top" class="ui-btn">Expense Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#incomePage" data-icon="carat-u" data-iconpos="top" class="ui-btn">Income Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#savingsPage" data-icon="check" data-iconpos="top" class="ui-btn">Savings Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#aboutPage" data-icon="info" data-iconpos="top" class="ui-btn">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div data-role="content">
+      <h3 class="mb-3"> Greetings, welcome to our Finance Tracker App! </h3>
+        <main id="app">
+            <div class="img-fluid image-container">
+                <img src="img/financeimg1.jpg" alt="Image 2">
+                <img src="img/financeimg2.jpg" alt="Image 3">
+                <img src="img/financeimg3.jpg" alt="Image 4">
+            </div>
+
+            <section data-role="content" >
+                <ul data-role="listview" class="ui-listview-inset" data-icon="plus">
+
+                        <li>Email: <a href="mailto:JaxDrummond16@financetrackerapp.com">JaxDrummond16@financetrackerapp.com</a></li>
+                        <li><a href="mailto:JagmeetSingh21@financetrackerapp.com">JagmeetSingh21@financetrackerapp.com</a></li>
+                        <li> <a href="mailto:Krishbajaj@financetrackerapp.com">Krishbajaj@financetrackerapp.com</a></li>
+
+                        <li>Phone: <a href="tel:123-456-7890">(123) 456-7890</a></li>
+                        <li> <a href="tel:437-678-4532">(437) 678-4532</a></li>
+                    </ul>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <h3>www.Studentconestogac.on.ca</h3>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+        </main>
+        </div>
+    </div>
+
+
+    <!-- Expense Tracker Page -->
+
+    <div id="expensePage" data-role="page" data-theme="b">
+
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Expenses- Click + button to add your expenses</h1>
+        </header>
+        <nav>
+            <div data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a href="#mainPage" data-icon="home" data-iconpos="top" class="ui-btn">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a data-icon="carat-d" data-iconpos="top" class="ui-btn ui-btn-active ui-state-persist">Expense
+                            Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#incomePage" data-icon="carat-u" data-iconpos="top" class="ui-btn">Income Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#savingsPage" data-icon="check" data-iconpos="top" class="ui-btn">Savings Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#aboutPage" data-icon="info" data-iconpos="top" class="ui-btn">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section data-role="content">
+            <div id="remainingIncomeArea"></div>
+            <ul data-role="listview" id="expenseListView">
+                <li>
+                    ......
+                </li>
+            </ul>
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+    </div>
+
+    <!-- Income Log Page -->
+    <div id="incomePage" data-role="page" data-theme="b">
+
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Income - Click + button to hold the account of your income</h1>
+        </header>
+        <nav>
+            <div data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a href="#mainPage" data-icon="home" data-iconpos="top" class="ui-btn">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expensePage" data-icon="carat-d" data-iconpos="top" class="ui-btn">Expense Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a data-icon="carat-u" data-iconpos="top" class="ui-btn ui-btn-active ui-state-persist">Income
+                            Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#savingsPage" data-icon="check" data-iconpos="top" class="ui-btn">Savings Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#aboutPage" data-icon="info" data-iconpos="top" class="ui-btn">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section data-role="content">
+            <ul data-role="listview" id="incomeListView">
+                <li>
+                    ......
+                </li>
+            </ul>
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+    </div>
+
+    <!-- Savings Goals Page -->
+    <div id="savingsPage" data-role="page" data-theme="b">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Savings Goals</h1>
+        </header>
+        <nav>
+            <div data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a href="#mainPage" data-icon="home" data-iconpos="top" class="ui-btn">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expensePage" data-icon="carat-d" data-iconpos="top" class="ui-btn">Expense Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#incomePage" data-icon="carat-u" data-iconpos="top" class="ui-btn">Income Log
+                        </a>
+                    </li>
+                    <li>
+                        <a data-icon="check" data-iconpos="top" class="ui-btn ui-btn-active ui-state-persist">Savings
+                            Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#aboutPage" data-icon="info" data-iconpos="top" class="ui-btn">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section data-role="content">
+
+            <form id="savingsForm">
+
+                <label for="initialGoalDropdown">Choose Your Initial Goal:</label>
+                <select id="initialGoalDropdown" data-native-menu="false">
+                    <option>Select Goal</option>
+                    <!-- Options will be dynamically added here from the database -->
+                </select>
+
+                <label for="timeToAchieve">Time (years)</label>
+                <input type="number" id="timeToAchieve" name="timeToAchieve" value="0" placeholder="The tenure you want to achieve this goal!">
+
+
+
+                <button type="button"  id="generateSavingsPlan" data-role="button" class="ui-btn ui-btn-active ui-state-persist">Generate Savings Plan</button>
+            </form>
+            <div id="savingsChartContainer">
+                <!-- Chart.js will render the chart here -->
+            </div>
+
+            <div id="savingsPlanSection">
+                <!-- Savings plan information will be dynamically added here -->
+            </div>
+
+
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" data-role="page" data-theme="b">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>About Us</h1>
+        </header>
+        <nav>
+            <div data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a href="#mainPage" data-icon="home" data-iconpos="top" class="ui-btn">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expensePage" data-icon="carat-d" data-iconpos="top" class="ui-btn">Expense Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#incomePage" data-icon="carat-u" data-iconpos="top" class="ui-btn">Income Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#savingsPage" data-icon="check" data-iconpos="top" class="ui-btn">Savings Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a data-icon="info" data-iconpos="top" class="ui-btn ui-btn-active ui-state-persist">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+                <section data-role="content">
+                    <p>
+                        Welcome to the Finance Tracker App, where we aim to manage your money and try to make it simpler and  more efficient to use!
+                    </p>
+                    <h2>Our Purpose</h2>
+                    <p>
+                        At Finance Tracker, our purpose is to empower individuals to take control of their finances by providing tools and insights to effectively manage income, expenses, and savings.
+                    </p>
+                    <h2>Features</h2>
+                    <ul>
+                        <li>Expense Tracking: Easily record and categorize your expenses.</li>
+                        <li>Income Log: Keep track of your sources of income.</li>
+                        <li>Savings Goals: Set and monitor your financial goals.</li>
+                    </ul>
+                    <h2>Contact Us</h2>
+                    <p>
+                        Have questions or suggestions? Please Reach out us on the following!
+                    </p>
+                    <ul data-role="listview" class="ui-listview-inset">
+                        <li>Email: <a href="mailto:JaxDrummond16@financetrackerapp.com">JaxDrummond16@financetrackerapp.com</a></li>
+                        <li><a href="mailto:JagmeetSingh21@financetrackerapp.com">JagmeetSingh21@financetrackerapp.com</a></li>
+                        <li> <a href="mailto:Krishbajaj@financetrackerapp.com">Krishbajaj@financetrackerapp.com</a></li>
+
+                        <li>Phone: <a href="tel:123-456-7890">(123) 456-7890</a></li>
+                        <li> <a href="tel:437-678-4532">(437) 678-4532</a></li>
+                    </ul>
+                </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+    </div>
+
+    <!-- Add/Edit Expense Page -->
+    <div id="addExpensePage" data-role="page" data-theme="b">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Add Expense</h1>
+        </header>
+        <nav>
+            <div data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a href="#mainPage" data-icon="home" data-iconpos="top" class="ui-btn">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expensePage" data-icon="carat-d" data-iconpos="top" class="ui-btn">Expense Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#incomePage" data-icon="carat-u" data-iconpos="top" class="ui-btn">Income Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#savingsPage" data-icon="check" data-iconpos="top" class="ui-btn">Savings Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#aboutPage" data-icon="info" data-iconpos="top" class="ui-btn">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section data-role="content">
+            <form id="addExpenseForm" name="addExpenseForm">
+                <table>
+                    <thead>
+
+               <tr>
+                <label for="expenseAmount">Amount:</label>
+                <input id="expenseAmount" name="expenseAmount" type="text" placeholder="1000">
+                   </tr>
+               <tr>
+                <label for="expenseCategory">Category:</label>
+                <select id="expenseCategory" name="expenseCategory">
+
+                </select>
+                   <tr>
+                <label for="expenseDate">Date:</label>
+                <input id="expenseDate" name="expenseDate" type="date">
+                   </tr>
+               <tr>
+                <label for="expenseDescription">Description:</label>
+                <textarea id="expenseDescription" name="expenseDescription"></textarea>
+                   </tr> </thead>
+                <div data-role="controlgroup" data-type="horizontal">
+                    <button class="btn btn-info" id="btnExpenseAdd" name="btnExpenseAdd" data-role="button">Add</button>
+                    <button class="btn btn-danger" id="btnExpenseDelete" name="btnExpenseDelete" data-role="button">Delete</button>
+                    <button class="btn btn-dark" id="btnExpenseCancel" name="btnExpenseCancel" data-role="button">Cancel</button>
+                </div>
+                </table>
+            </form>
+        </section>
+
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+    </div>
+
+    <!-- Add/Edit Income Page -->
+    <div id="addIncomePage" data-role="page" data-theme="b">
+        <header data-role="header" data-position="fixed" data-theme="b">
+            <h1>Add Income</h1>
+        </header>
+        <nav>
+            <div data-role="navbar" data-type="horizontal" style="margin-top:0;">
+                <ul>
+                    <li>
+                        <a href="#mainPage" data-icon="home" data-iconpos="top" class="ui-btn">Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#expensePage" data-icon="carat-d" data-iconpos="top" class="ui-btn">Expense Tracker
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#incomePage" data-icon="carat-u" data-iconpos="top" class="ui-btn">Income Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#savingsPage" data-icon="check" data-iconpos="top" class="ui-btn">Savings Goals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#aboutPage" data-icon="info" data-iconpos="top" class="ui-btn">About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section data-role="content">
+            <form id="addIncomeForm" name="addIncomeForm">
+                <label for="incomeAmount">Amount:</label>
+                <input id="incomeAmount" name="incomeAmount" type="text" placeholder="1000">
+                <label for="incomeSource">Source:</label>
+                <input id="incomeSource" name="incomeSource" type="text" placeholder="Fiver">
+                <label for="incomeDate">Date:</label>
+                <input id="incomeDate" name="incomeDate" type="date">
+                <label for="incomeDescription">Description:</label>
+                <textarea id="incomeDescription" name="incomeDescription"></textarea>
+                <div data-role="controlgroup" data-type="horizontal">
+                    <button class="btn btn-info" id="btnIncomeAdd" name="btnIncomeAdd" data-role="button">Add</button>
+                    <button class="btn btn-danger" id="btnIncomeDelete" name="btnIncomeDelete" data-role="button" >Delete</button>
+                    <button class="btn btn-dark" id="btnIncomeCancel" name="btnIncomeCancel" data-role="button">Cancel</button>
+                </div>
+            </form>
+        </section>
+        <footer data-role="footer" data-position="fixed" data-theme="b">
+            <h1>&copy; 2023 Jagmeet, Jax, Krish</h1>
+        </footer>
+    </div>
+</body>
+
+</html>
